@@ -29,7 +29,6 @@ function CustomImage({ url, ...props }) {
   )
 }
 
-
 export default function Images() {
   const { width, height } = useThree((state) => state.viewport)
   const data = useScroll()
@@ -76,9 +75,24 @@ export default function Images() {
         scale={[width - 1, height / 2, 1]}
         url="/wideGroup.jpg"
       />
-      <Image position={[1.5, -height * 3.12, 2]} scale={[1, 3, 1]} url="/john.jpg" />
-      <Image position={[1.0, -height * 3.0, 3]} scale={[1, 2, 1]} url="/ray.jpg" />
-      <Image position={[5.0, -height * 3.0, 3.5]} scale={1.5} url="/robby.jpg" />
+      <Image
+        position={[1.0, -height * 3.0, 3]}
+        rotation={[0, Math.PI * 2.35, 0]}
+        scale={[2, 2, 1]}
+        url="/cover2.jpeg"
+      />
+      <Image
+        position={[2.5, -height * 3.12, 2]}
+        rotation={[0, Math.PI * 2.05, 0]}
+        scale={[2, 2, 1]}
+        url="/cover1.jpeg"
+      />
+      <Image
+        position={[5.0, -height * 3.0, 3.5]}
+        rotation={[0, Math.PI * 2.05, 0]}
+        scale={[1, 1, 1]}
+        url="/cover3.jpeg"
+      />
     </group>
   )
 }

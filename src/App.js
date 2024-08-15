@@ -1,11 +1,20 @@
 import React, { Suspense, useRef } from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
-import { ScrollControls, Scroll, Preload, Environment, OrbitControls, PresentationControls } from '@react-three/drei'
+import {
+  ScrollControls,
+  Scroll,
+  Preload,
+  Environment,
+  OrbitControls,
+  PresentationControls,
+  Sphere
+} from '@react-three/drei'
 import { EffectComposer, Vignette } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 import { Leva } from 'leva'
 import Images from './components/Images'
 import ScrollContent from './components/ScrollContent'
+import Spheres from './components/Spheres'
 
 function CombinedControls({ scrollPages }) {
   const { camera, gl } = useThree()
@@ -43,6 +52,8 @@ function CombinedControls({ scrollPages }) {
           <Scroll html>
             <ScrollContent />
           </Scroll>
+
+          <Spheres count={100} />
         </ScrollControls>
       </PresentationControls>
     </>
@@ -54,7 +65,8 @@ export default function App() {
     <>
       <Leva collapsed />
       <Canvas camera={{ position: [10, 0, 10], fov: 35 }} dpr={[1, 1.5]}>
-        <directionalLight intensity={5.0} position={[1, 0, 2]} />
+        <directionalLight intensity={4.0} position={[1, 0, 2]} />
+
         <Suspense fallback={null}>
           <CombinedControls scrollPages={4} />
           <EffectComposer>
