@@ -9,7 +9,7 @@ import {
   PresentationControls,
   Sphere
 } from '@react-three/drei'
-import { EffectComposer, Vignette } from '@react-three/postprocessing'
+import { EffectComposer, Vignette, DepthOfField, DotScreen } from '@react-three/postprocessing'
 import { BlendFunction } from 'postprocessing'
 import { Leva } from 'leva'
 import Images from './components/Images'
@@ -64,17 +64,22 @@ export default function App() {
   return (
     <>
       <Leva collapsed />
-      <Canvas camera={{ position: [10, 0, 10], fov: 35 }} dpr={[1, 1.5]}>
+      <Canvas camera={{ position: [9, 0, 10], fov: 35 }} dpr={[1, 1.5]}>
         <directionalLight intensity={4.0} position={[1, 0, 2]} />
 
         <Suspense fallback={null}>
           <CombinedControls scrollPages={4} />
           <EffectComposer>
             <Vignette
-              offset={0.5}
-              darkness={0.9}
+              offset={0.4}
+              darkness={0.8}
               eskil={false}
               blendFunction={BlendFunction.NORMAL}
+            />
+            <DotScreen
+              blendFunction={BlendFunction.NORMAL}
+              angle={Math.PI / 3}
+              scale={3}
             />
           </EffectComposer>
           <Preload />
