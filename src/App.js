@@ -42,7 +42,7 @@ function CombinedControls({ scrollPages }) {
         zoom={1} // Zoom factor when half the polar-max is reached
         rotation={[0, 0, 0]} // Default rotation
         polar={[-Math.PI / 2, Math.PI / 2]} // Verticaltouch me limits
-        azimuth={[-Math.PI / 3, Math.PI / 2]} // Horizontal limits
+        azimuth={[-Math.PI / 5, Math.PI / 5]} // Horizontal limits
         config={{ mass: 2, tension: 170, friction: 56 }} // Spring config
       >
         <ScrollControls pages={scrollPages} damping={0.4} enabled={true} infinite={false}>
@@ -53,7 +53,7 @@ function CombinedControls({ scrollPages }) {
             <ScrollContent />
           </Scroll>
 
-          <Spheres count={100} />
+          <Spheres count={20} />
         </ScrollControls>
       </PresentationControls>
     </>
